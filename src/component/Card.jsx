@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const Card = () => {
     // Sample data - can replace this with actual data as needed
     // const sessions = [
@@ -19,7 +21,7 @@ const Card = () => {
     useEffect(() => {
         const fetchUserId = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/user/${user.username}`);
+                const response = await axios.get(`${serverUrl}/user/${user.username}`);
                 setUserId(response.data.id);
             } catch (error) {
                 console.error("Error fetching user:", error);
@@ -31,7 +33,7 @@ const Card = () => {
     useEffect(() => {
         const fetchSessions = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/sessions`);
+                const response = await axios.get(`${serverUrl}/sessions`);
                 setSessions(response.data);
             } catch (error) {
                 console.error("Error fetching sessions:", error);
@@ -42,7 +44,7 @@ const Card = () => {
 
     const updateSession = async (sessionId) => {
             try {
-                const response = await axios.put(`http://localhost:8000/session/${sessionId}/end`);
+                const response = await axios.put(`${serverUrl}/session/${sessionId}/end`);
                 console.log(response.data);
                 // Update the session state
                 setSessions(sessions.map((session) => {

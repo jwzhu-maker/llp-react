@@ -3,6 +3,8 @@ import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 import './SessionPage.css';
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const SessionPage = () => {
     const [restaurantName, setRestaurantName] = useState('');
     const [restaurants, setRestaurants] = useState([]);
@@ -23,7 +25,7 @@ const SessionPage = () => {
     useEffect(() => {
         const checkUserSubmission = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/check-submission/${sessionId}/${user.username}`);
+                const response = await axios.get(`${serverUrl}/check-submission/${sessionId}/${user.username}`);
                 if (response.data.submitted) {
                     setRestaurants([response.data.restaurantName]);
                     setIsSubmitted(true);
@@ -39,7 +41,7 @@ const SessionPage = () => {
     useEffect(() => {
         const fetchSubmissions = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/session/${sessionId}/submissions`);
+                const response = await axios.get(`${serverUrl}/session/${sessionId}/submissions`);
                 setSubmissions(response.data);
             } catch (error) {
                 console.error("Error fetching submissions:", error);
@@ -48,7 +50,7 @@ const SessionPage = () => {
 
         const getOwnerName = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/session/${sessionId}/owner`);
+                const response = await axios.get(`${serverUrl}/session/${sessionId}/owner`);
                 setSession(response.data)
             } catch (error) {
                 console.error("Error fetching owner:", error);
@@ -64,7 +66,7 @@ const SessionPage = () => {
         setRestaurants([restaurantName]);
         // call API to save the submission
         try {
-            await axios.post(`http://localhost:8000/submit-restaurant/`, {
+            await axios.post(`${serverUrl}/submit-restaurant/`, {
                 session_id: sessionId,
                 restaurant_name: restaurantName,
                 user_name: user.username,
@@ -77,7 +79,7 @@ const SessionPage = () => {
 
         // update the submission list
         try {
-            const response = await axios.get(`http://localhost:8000/session/${sessionId}/submissions`);
+            const response = await axios.get(`${serverUrl}/session/${sessionId}/submissions`);
             setSubmissions(response.data);
         } catch (error) {
             console.error("Error fetching submissions:", error);
