@@ -6,6 +6,7 @@ import Card from "./component/Card";
 import Modal from "./component/NewSessionModal";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
+console.log('Server URL:', serverUrl);
 
 const HomePage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,12 +25,12 @@ const HomePage = () => {
         }
     }, []);
 
-    const onLogin = (username, password) => {
+    const onLogin = async (username, password) => {
         const userData = {username};
         // try to log in this user to backend
         // if successful, set user data and isLoggedIn
         try {
-            const response = fetch(`${serverUrl}/login/`, {
+            const response = await fetch(`${serverUrl}/login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -60,7 +61,7 @@ const HomePage = () => {
 
     const createSession = async (sessionName, ownerName, sessionParticipants) => {
         try {
-            const response = await fetch('${serverUrl}/create-session/', {
+            const response = await fetch(`${serverUrl}/create-session/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
