@@ -1,0 +1,167 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/public/homepage-background.png'); /* Set the background image */
+    background-position: center center; /* Keep the image centered */
+    background-size: cover; /* Cover the area, maintain aspect ratio */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional: fixed or scroll */
+}
+
+.homePage {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh; /* This ensures that the container takes the full viewport height */
+}
+
+/* Header */
+.header {
+    background-color: #8c5e2e;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    width: 30%;
+    height: 100vh; /* This ensures that the container takes the full viewport height */
+}
+
+/* Main Content Area */
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+    width: 100vw; /* This ensures that the container takes the full viewport width */
+    text-align: center;
+    overflow: scroll;
+}
+
+.sessionContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100vw; /* This ensures that the container takes the full viewport width */
+    text-align: center;
+}
+
+/* Buttons */
+.createSessionButton, .joinSessionButton {
+    background-color: #008CBA; /* Blue button background */
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.createSessionButton:hover {
+    background-color: #005f73; /* Darker blue on hover */
+}
+
+/* Footer */
+.footer {
+    background-color: #333; /* Dark footer background */
+    color: white;
+    text-align: right;
+    padding: 20px 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.restaurantList {
+    background-color: #ecd6ba;
+    max-height: 200px;
+    text-align: center;
+}
+
+.w-10px {
+    width: 10px;
+}
+
+.w-40px {
+    width: 40px;
+}
+
+.w-30pt {
+    width: 30%;
+}
+
+.w-100px {
+    width: 100px;
+}
+
+.w-150px {
+    width: 150px;
+}
+
+.w-200px {
+    width: 200px;
+}
+
+.w-250px {
+    width: 250px;
+}
+
+.w-300px {
+    width: 300px;
+}
+
+/* write all styles from .w-1pt to .w-100pt */
+.w-0pt, .w-1pt,.w-2pt,.w-3pt,.w-4pt,.w-5pt {
+    width: 1%;
+}
+
+.w-6pt,.w-7pt,.w-8pt,.w-9pt {
+    width: 6%;
+}
+
+.w-10pt,.w-11pt,.w-12pt,.w-13pt,.w-14pt,.w-15pt,.w-16pt,.w-17pt,.w-18pt,.w-19pt {
+    width: 10%;
+}
+
+.w-20pt,.w-21pt,.w-22pt,.w-23pt,.w-24pt,.w-25pt,.w-26pt,.w-27pt,.w-28pt,.w-29pt {
+    width: 20%;
+}
+
+.w-30pt,.w-31pt,.w-32pt, .w-33pt,.w-34pt,.w-35pt,.w-36pt,.w-37pt,.w-38pt,.w-39pt {
+    width: 30%;
+}
+
+.w-40pt,.w-41pt,.w-42pt,.w-43pt,.w-44pt,.w-45pt,.w-46pt,.w-47pt,.w-48pt,.w-49pt {
+    width: 40%;
+}
+
+.w-50pt,.w-51pt,.w-52pt,.w-53pt,.w-54pt,.w-55pt,.w-56pt,.w-57pt,.w-58pt,.w-59pt {
+    width: 50%;
+}
+
+.w-60pt,.w-61pt,.w-62pt,.w-63pt,.w-64pt,.w-65pt,.w-66pt,.w-67pt,.w-68pt,.w-69pt {
+    width: 60%;
+}
+
+.w-70pt,.w-71pt,.w-72pt,.w-73pt,.w-74pt,.w-75pt,.w-76pt,.w-77pt,.w-78pt,.w-79pt {
+    width: 70%;
+}
+
+.w-80pt,.w-81pt,.w-82pt,.w-83pt,.w-84pt,.w-85pt,.w-86pt,.w-87pt,.w-88pt,.w-89pt {
+    width: 80%;
+}
+
+.w-90pt,.w-91pt,.w-92pt,.w-93pt,.w-94pt,.w-95pt,.w-96pt,.w-97pt,.w-98pt,.w-99pt {
+    width: 90%;
+}
+
+.w-100pt, .w-125pt, .w-150pt, .w-200pt, .w-300pt, .w-400pt {
+    width: 100%;
+}
