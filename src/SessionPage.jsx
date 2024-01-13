@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 import './SessionPage.css';
 
-const serverUrl = process.env.REACT_APP_SERVER_URL ?? "http://178.128.106.25:8000";
+const serverUrl = process.env.REACT_APP_SERVER_URL ?? "http://localhost:8000";
 
 const SessionPage = () => {
     const [restaurantName, setRestaurantName] = useState('');
