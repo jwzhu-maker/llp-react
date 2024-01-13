@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = process.env.REACT_APP_SERVER_URL ?? "http://178.128.106.25:8000";
 
 const Card = () => {
     // Sample data - can replace this with actual data as needed

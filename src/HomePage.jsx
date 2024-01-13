@@ -5,7 +5,7 @@ import LoginPage from "./LoginPage";
 import Card from "./component/Card";
 import Modal from "./component/NewSessionModal";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = process.env.REACT_APP_SERVER_URL ?? "http://178.128.106.25:8000";
 console.log('Server URL:', serverUrl);
 
 const HomePage = () => {
