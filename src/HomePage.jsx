@@ -25,6 +25,23 @@ const HomePage = () => {
         }
     }, []);
 
+    useEffect(() => {
+        const closeOnEscapeKeyDown = (e) => {
+            if ((e.charCode || e.keyCode) === 27) {
+                setShowModal(false);
+            }
+        };
+
+        // Bind the event listener
+        document.body.addEventListener('keydown', closeOnEscapeKeyDown);
+
+        // Clean up the event listener
+        return () => {
+            document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+        };
+    }, []); // Empty dependency array ensures this runs once on mount and on unmount
+
+
     const onLogin = async (username, password) => {
         const userData = {username};
         // try to log in this user to backend
@@ -66,7 +83,11 @@ const HomePage = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({name: sessionName, owner_name: ownerName, session_participants: sessionParticipants})
+                body: JSON.stringify({
+                    name: sessionName,
+                    owner_name: ownerName,
+                    session_participants: sessionParticipants
+                })
             });
 
             if (!response.ok) {
@@ -95,9 +116,22 @@ const HomePage = () => {
         navigate(`/session/${newSessionId}`);
     };
 
+    const handleParticipantChange = (e) => {
+        const value = e.target.value;
+        const number = Number(value); // Convert to a number. Non-numeric input becomes NaN
+
+        // Check if the number is an integer and greater than or equal to 0
+        if (!isNaN(number) && Number.isInteger(number) && number >= 0) {
+            setNewSessionParticipants(number);
+        } else {
+            // If the input is not a valid number, you can set a default value (like 0) or do nothing
+            setNewSessionParticipants(0);
+        }
+    };
+
     return (
         <div className="homePage">
-            <header className="header">
+            <header className="leftHeader">
                 <h1>Lunch Location Picker</h1>
                 <p>Welcome, {user.username}</p>
                 <button onClick={onLogout} className="btn btn-sm btn-primary mb-3">
@@ -125,10 +159,10 @@ const HomePage = () => {
                             </div>
                             <div className="d-flex justify-content-between">
                                 <p className="text-bold text-blue w-300px mr-auto">Expected Participants:</p>
-                                    <input
+                                <input
                                     type="text"
                                     value={newSessionParticipants}
-                                    onChange={(e) => setNewSessionParticipants(parseInt(e.target.value))}
+                                    onChange={handleParticipantChange}
                                     placeholder="Number of participants"
                                     className="w-70pt"
                                 />
@@ -149,9 +183,9 @@ const HomePage = () => {
                 </section>
             </main>
 
-            {/*<footer className="footer">*/}
-            {/*    /!* Additional information and links *!/*/}
-            {/*</footer>*/}
+            <footer className="footer">
+                Lunch Restaurant Picker
+            </footer>
         </div>
     );
 };

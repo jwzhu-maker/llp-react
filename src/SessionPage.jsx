@@ -89,7 +89,7 @@ const SessionPage = () => {
 
     return (
         <div className="sessionPage">
-            <header className="header">
+            <header className="leftHeader">
                 <h1>Session: {sessionId} </h1>
                 <h5>{session.name}</h5>
                 <button onClick={navigateToHome} className="btn btn-sm btn-primary mb-3">
