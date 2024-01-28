@@ -120,7 +120,7 @@ const Card = () => {
                                     className={`badge ${getProgressColor(session.progress)}`}>{session.progress}%</span>
                                 </td>
                                 <td>
-                                    {(session.owner_id === userId) && (session.status === "open") && (
+                                    {(session.ownerId === userId) && (session.status === "open") && (
                                         <button type="button" className="btn btn-danger btn-block btn-sm"
                                                 onClick={() => handleEndSession(session.id)}>
                                             <i className="fa fa-bell"></i> End Session

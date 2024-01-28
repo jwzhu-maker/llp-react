@@ -26,6 +26,7 @@ const SessionPage = () => {
         const checkUserSubmission = async () => {
             try {
                 const response = await axios.get(`${serverUrl}/check-submission/${sessionId}/${user.username}`);
+                console.log("checkUserSubmission response.data = ", response.data);
                 if (response.data.submitted) {
                     setRestaurants([response.data.restaurantName]);
                     setIsSubmitted(true);
@@ -51,7 +52,8 @@ const SessionPage = () => {
         const getOwnerName = async () => {
             try {
                 const response = await axios.get(`${serverUrl}/session/${sessionId}/owner`);
-                setSession(response.data)
+                console.log("getOwnerName response.data = ", response.data);
+                setSession(response.data);
             } catch (error) {
                 console.error("Error fetching owner:", error);
             }
@@ -67,9 +69,9 @@ const SessionPage = () => {
         // call API to save the submission
         try {
             await axios.post(`${serverUrl}/submit-restaurant/`, {
-                session_id: sessionId,
-                restaurant_name: restaurantName,
-                user_name: user.username,
+                sessionId: sessionId,
+                restaurantName: restaurantName,
+                userName: user.username,
             });
         } catch (error) {
             console.error("Error submitting restaurant:", error);
@@ -144,8 +146,8 @@ const SessionPage = () => {
                     <div className="submissionList">
                         {submissions.map((submission, index) => (
                             <div key={index} className="submission">
-                                <span className="user">{submission.user}:</span>
-                                <span className="restaurant">{submission.restaurant}</span>
+                                <span className="user">{submission.user.name}:</span>
+                                <span className="restaurant">{submission.restaurant.name}</span>
                             </div>
                         ))}
                     </div>

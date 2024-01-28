@@ -85,8 +85,8 @@ const HomePage = () => {
                 },
                 body: JSON.stringify({
                     name: sessionName,
-                    owner_name: ownerName,
-                    session_participants: sessionParticipants
+                    ownerName: ownerName,
+                    sessionParticipants: sessionParticipants
                 })
             });
 
@@ -112,7 +112,7 @@ const HomePage = () => {
         setShowModal(false);
         const owner_name = user.username;
         const responseData = await createSession(newSessionName, owner_name, newSessionParticipants);
-        const newSessionId = responseData?.session_id;
+        const newSessionId = responseData?.id;
         navigate(`/session/${newSessionId}`);
     };
 
